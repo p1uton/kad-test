@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { CitiesList } from './components/CitiesList';
+import { CityContainer } from './components/CityContainer';
+import { AppProvider, Page } from '@shopify/polaris';
 
-function App() {
+export const App = () => {
+  const cityId = useSelector(state => state.cityId);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider>
+      <Page>
+        {
+          null !== cityId
+            ? <CityContainer />
+            : <CitiesList />
+        }
+      </Page>
+    </AppProvider>
   );
-}
-
-export default App;
+};

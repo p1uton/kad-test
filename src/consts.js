@@ -1,0 +1,1 @@
+export const OWM_API_KEY = 'fd83f2e5d611298e3c7568537588009d';
